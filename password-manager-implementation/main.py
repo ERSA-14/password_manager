@@ -65,6 +65,31 @@ def save():
 			finally:
 				input_website.delete(0,len(input_website.get()))
 				input_password.delete(0,len(input_password.get()))
+		'''
+			SHEETY_ENDPOINT = "use your own sheet"
+			SHEET_NAME_KEY = "password" 
+			
+		
+			website = input_website.get()
+			email = input_email.get()
+			password = input_password.get()
+			
+			save_data = {
+				SHEET_NAME_KEY: {
+					"website": website,
+					"email": email,
+					"password": password
+				}
+			}
+			
+			if output:
+				try:
+					response = requests.post(url=SHEETY_ENDPOINT, json=save_data)
+					response.raise_for_status()  
+					
+				except requests.exceptions.RequestException as e:
+					messagebox.showerror(title="API Error", message=f"Could not save data.\nError: {e}")
+			'''
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------- #
 
